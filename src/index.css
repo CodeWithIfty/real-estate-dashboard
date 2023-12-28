@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700&display=swap");
+
+.baloda {
+  font-family: "Baloo Da 2", cursive;
+}
+.floating-label-input {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.floating-label-input input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: border-color 0.2s;
+}
+
+.floating-label-input label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #888;
+  font-size: 16px;
+  transform: translate(12px, 12px);
+  pointer-events: none;
+  transition: transform 0.2s, font-size 0.2s, color 0.2s;
+}
+
+.floating-label-input.focused label,
+.floating-label-input input:valid + label {
+  transform: translate(12px, -12px);
+  background-color: white;
+  border-radius: 10px;
+
+  font-size: 15px;
+  color: #888;
+}
+
+
+/* Target the horizontal scrollbar */
+::-webkit-scrollbar {
+  width: 5px; /* Set the width of the scrollbar */
+  height: 8px; /* Set the height of the scrollbar (optional) */
+}
+
+/* Track - the area behind the scrollbar thumb */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Set the background color of the track */
+}
+
+/* Thumb - the draggable scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Set the background color of the thumb */
+  border-radius: 6px; /* Set the border radius to make it rounded */
+}
+
+/* Button - the buttons at the ends of the scrollbar (optional) */
+::-webkit-scrollbar-button {
+  display: none; /* Hide the scrollbar buttons (optional) */
+}
+
+/* Corner - the space between vertical and horizontal scrollbars (optional) */
+::-webkit-scrollbar-corner {
+  background: #f1f1f1; /* Set the background color of the corner (optional) */
+}
+
+/* Resizer - the draggable separator between horizontal and vertical scrollbars (optional) */
+::-webkit-resizer {
+  background: #f1f1f1; /* Set the background color of the resizer (optional) */
+}
