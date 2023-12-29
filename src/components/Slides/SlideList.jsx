@@ -2,8 +2,20 @@ import { Link } from "react-router-dom";
 import { BsPencilSquare } from "react-icons/bs";
 import { BiSolidDownload } from "react-icons/bi";
 import { RxCross2 } from "react-icons/rx";
+import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
-const SlideList = () => {
+const SlideList = ({ slides, refetch }) => {
+  const axiosSecure = useAxiosSecure();
+
+  const handleSlideDelete = async (id) => {
+    const toastId = toast.loading("Loading...");
+    const res = await axiosSecure.delete(`/slides/${id}`);
+    toast.success("Delete success", { id: toastId });
+    console.log(res);
+    refetch();
+  };
   return (
     <div className="col-span-3 ">
       <div className="navbar flex-col xl:flex-row bg-white dark:bg-black">
@@ -33,6 +45,9 @@ const SlideList = () => {
             <tr>
               <th>#SL</th>
               <th>Slide Image</th>
+              <th>Title</th>
+              <th>Location</th>
+              <th>Description</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -40,25 +55,32 @@ const SlideList = () => {
           <tbody className="bg-gray-50 dark:bg-black">
             {/* row 1 */}
 
-            <tr className="">
-              <th className=" border border-gray-300">1</th>
-              <td className=" border border-gray-300">
-                <div className="w-24 ">
-                  <img
-                    alt="Avatar Tailwind CSS Component"
-                    src="https://api.rpi.gov.bd/frontend/images/slider/6573d5e73970f.png"
-                  />
-                </div>
-              </td>
+            {slides?.map((slide, index) => (
+              <tr className="" key={index}>
+                <th className=" border border-gray-300">1</th>
+                <td className=" border border-gray-300">
+                  <div className="w-24 ">
+                    <img
+                      alt="Avatar Tailwind CSS Component"
+                      src={`https://apis.rpi.gov.bd/frontend/uploads/${slide.image}`}
+                    />
+                  </div>
+                </td>
+                <th className=" border border-gray-300">{slide?.title}</th>
+                <th className=" border border-gray-300">{slide?.location}</th>
+                <th className=" border border-gray-300">
+                  {slide?.description}
+                </th>
 
-              <td className=" border border-gray-300">
-                <div className="flex items-center justify-around border-none">
-                  <button>
-                    <RxCross2 className="h-5 w-5  text-red-600 scale-150 font-extrabold" />
-                  </button>
-                </div>
-              </td>
-            </tr>
+                <td className=" border border-gray-300">
+                  <div className="flex items-center justify-around border-none">
+                    <button onClick={() => handleSlideDelete(slide.id)}>
+                      <RxCross2 className="h-5 w-5  text-red-600 scale-150 font-extrabold" />
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

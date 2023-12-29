@@ -10,6 +10,10 @@ import AuthProvider from "./context/AuthProvider";
 import Root from "./Root";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import Slides from "./pages/Slides/Slides";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "react-hot-toast";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -42,10 +46,13 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <MyThemeProvider>
-      <AuthProvider>
-        <RouterProvider router={router} />
-      </AuthProvider>
-    </MyThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <MyThemeProvider>
+        <AuthProvider>
+          <RouterProvider router={router} />
+          <Toaster />
+        </AuthProvider>
+      </MyThemeProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
