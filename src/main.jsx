@@ -10,6 +10,7 @@ import AuthProvider from "./context/AuthProvider";
 import Root from "./Root";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import Slides from "./pages/Slides/Slides";
+import Project from "./pages/Project/Project";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 
@@ -37,6 +38,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <Slides />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/dashboard/add-project",
+        element: (
+          <PrivateRoutes>
+            <Project />
           </PrivateRoutes>
         ),
       },

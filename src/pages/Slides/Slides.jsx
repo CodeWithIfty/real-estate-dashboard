@@ -17,7 +17,7 @@ const Slides = () => {
       <div className="p-3 grid lg:grid-cols-6 gap-5">
         <SlideList slides={slides} refetch={refetch} />
         <div className="col-span-3">
-          <AddSlide refetch={refetch}/>
+          <AddSlide refetch={refetch} />
         </div>
       </div>
     </div>

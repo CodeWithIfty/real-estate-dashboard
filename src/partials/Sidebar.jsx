@@ -2,10 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { PiSlideshowFill } from "react-icons/pi";
 
 import { Link, NavLink, useLocation } from "react-router-dom";
-
 import SidebarLinkGroup from "./SidebarLinkGroup";
-import { BsFillPersonVcardFill } from "react-icons/bs";
 import { RxDashboard } from "react-icons/rx";
+import { GoProjectRoadmap } from "react-icons/go";
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const location = useLocation();
@@ -156,10 +155,11 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 }}
               </SidebarLinkGroup>
 
-              {/* Profile */}
+              {/* Slide */}
               <SidebarLinkGroup
                 activecondition={
-                  pathname === "/my-profile" || pathname.includes("my-profile")
+                  pathname === "/dashboard/slides" ||
+                  pathname.includes("slides")
                 }
               >
                 {(handleClick, open) => {
@@ -167,8 +167,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     <Link
                       to={"/dashboard/slides"}
                       className={`block text-slate-200 truncate transition duration-150 ${
-                        pathname === "/my-profile" ||
-                        pathname.includes("my-profile")
+                        pathname === "slides" || pathname.includes("slides")
                           ? "hover:text-slate-200"
                           : "hover:text-white"
                       }`}
@@ -178,6 +177,38 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                           <PiSlideshowFill />
                           <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                             Slides
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                }}
+              </SidebarLinkGroup>
+
+              {/* Add Project */}
+              <SidebarLinkGroup
+                activecondition={
+                  pathname === "/dashboard/add-project" ||
+                  pathname.includes("add-project")
+                }
+              >
+                {(handleClick, open) => {
+                  return (
+                    <Link
+                      to={"/dashboard/add-project"}
+                      className={`block text-slate-200 truncate transition duration-150 ${
+                        pathname === "add-project" ||
+                        pathname.includes("add-project")
+                          ? "hover:text-slate-200"
+                          : "hover:text-white"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center">
+                          <GoProjectRoadmap />
+
+                          <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                            Add Project
                           </span>
                         </div>
                       </div>
