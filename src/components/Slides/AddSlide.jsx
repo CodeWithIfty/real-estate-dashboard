@@ -30,7 +30,7 @@ const AddSlide = ({ refetch }) => {
     const toastId = toast.loading("Loading...");
     try {
       const imageFormData = new FormData();
-      imageFormData.append("photo_path", uploadImage); // Append the image blob or file here
+      imageFormData.append("photo_path", uploadImage); 
 
       // Post the image to the first API to generate a link
       const imageResponse = await axios.post(

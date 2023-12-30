@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { authContext } from "../context/AuthProvider";
 
 const axiosSecure = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: "https://sp-server.rpi.gov.bd",
   withCredentials: true,
 });
 
