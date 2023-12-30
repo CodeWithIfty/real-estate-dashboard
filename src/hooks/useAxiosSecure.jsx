@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { authContext } from "../context/AuthProvider";
 
 const axiosSecure = axios.create({
-  baseURL: "https://sp-server.rpi.gov.bd",
+  baseURL: "https://sums-apis.rpi.gov.bd",
   withCredentials: true,
 });
 
