@@ -17,7 +17,6 @@ const AddProject = ({ refetch }) => {
     road_size: "",
     land_size: "",
   });
-  const [description, setDescription] = useState("");
   const [images, setImages] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
 
@@ -88,9 +87,6 @@ const AddProject = ({ refetch }) => {
       toast.success("Project created successfully", { id: toastId });
       refetch();
       // Make a request to the desired endpoint with 'data'
-
-      // Rest of your logic for posting data to the API
-      // ...
     } catch (error) {
       console.error("Error adding project:", error);
       toast.error("Failed to add project", { id: toastId });
@@ -122,7 +118,7 @@ const AddProject = ({ refetch }) => {
           type="text"
           id="title"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Slide title here"
+          placeholder="Project title here"
           required
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -140,7 +136,7 @@ const AddProject = ({ refetch }) => {
           type="text"
           id="location"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Slide location here"
+          placeholder="Project location here"
           required
           value={location}
           onChange={(e) => setLocation(e.target.value)}
@@ -159,7 +155,7 @@ const AddProject = ({ refetch }) => {
           type="text"
           id="project_link"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Slide project link here"
+          placeholder="Project Location link here"
           required
           value={locationLink}
           onChange={(e) => setLocationLink(e.target.value)}
@@ -181,8 +177,9 @@ const AddProject = ({ refetch }) => {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
-          <option value="">Select Category</option>
+          <option value="">Select Project Category</option>
           <option value="Residential">Residential</option>
+          <option value="Commercial">Commercial</option>
           <option value="Land">Land</option>
         </select>
       </div>
@@ -200,7 +197,7 @@ const AddProject = ({ refetch }) => {
             type="text"
             id="unit_size"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Slide project link here"
+            placeholder="Project Unit Size"
             required
             value={projectDetails.unit_size}
             onChange={(e) =>
@@ -224,7 +221,7 @@ const AddProject = ({ refetch }) => {
             type="text"
             id="present_status"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Slide project link here"
+            placeholder="Project Present Status"
             required
             value={projectDetails.present_status}
             onChange={(e) =>
@@ -248,7 +245,7 @@ const AddProject = ({ refetch }) => {
             type="text"
             id="number_of_floor"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Slide project link here"
+            placeholder="Project Number of floor"
             required
             value={projectDetails.number_of_floor}
             onChange={(e) =>
@@ -272,7 +269,7 @@ const AddProject = ({ refetch }) => {
             type="text"
             id="basement"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Slide project link here"
+            placeholder="Project Basement"
             required
             value={projectDetails.basement}
             onChange={(e) =>
@@ -296,7 +293,7 @@ const AddProject = ({ refetch }) => {
             type="text"
             id="road_size"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Slide project link here"
+            placeholder="Project Basement"
             required
             value={projectDetails.road_size}
             onChange={(e) =>
@@ -320,7 +317,7 @@ const AddProject = ({ refetch }) => {
             type="text"
             id="land_size"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Slide project link here"
+            placeholder="Project Land Size"
             required
             value={projectDetails.land_size}
             onChange={(e) =>
@@ -334,75 +331,42 @@ const AddProject = ({ refetch }) => {
       </div>
 
       {/* Multiple Image Input */}
-      <div className="flex items-center justify-center w-full mt-3">
-        <label
-          htmlFor="dropzone-file"
-          className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-        >
-          {imagePreviews.length > 0 ? (
-            // Render image previews for selected images
-            <div className="flex flex-wrap">
-              {imagePreviews.map((preview, index) => (
-                <div key={index} className="w-44 h-44 mr-3 mb-3">
-                  <img
-                    src={preview}
-                    alt={`preview-${index}`}
-                    className="max-w-full max-h-full rounded-lg"
-                  />
-                </div>
-              ))}
-            </div>
-          ) : (
-            // Render instructions when no image is selected
-            <div className="flex items-center justify-center w-full mt-3">
-              <label htmlFor="dropzone-file" className="">
-                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                  <svg
-                    className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 20 16"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                    />
-                  </svg>
-                  <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                    <span className="font-semibold">Click to upload</span> or
-                    drag and drop
-                  </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    SVG, PNG, JPG or GIF (MAX. 800x400px)
-                  </p>
-                </div>
-                <input
-                  id="dropzone-file"
-                  type="file"
-                  className="hidden"
-                  multiple // Enable multiple file selection
-                  onChange={handleImageChange}
-                />
-              </label>
-            </div>
-          )}
+      <div className=" w-full mt-3">
+        <div className="mb-5">
+          <label
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            htmlFor="file_input"
+          >
+            Upload file
+          </label>
           <input
+            className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
             id="dropzone-file"
             type="file"
-            className="hidden"
             multiple // Enable multiple file selection
             onChange={handleImageChange}
           />
-        </label>
+        </div>
+        {imagePreviews.length > 0 && (
+          // Render image previews for selected images
+          <div className="flex items-center flex-wrap">
+            {imagePreviews.map((preview, index) => (
+              <div key={index} className=" mr-3 mb-3 relative">
+                <img
+                  src={preview}
+                  alt={`preview-${index}`}
+                  className={` object-center w-44 h-28 rounded-lg`}
+                />
+                {index === imagePreviews.length - 1 ? <p className="absolute font-bold">Cover Image</p> : ""}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="mt-4">
-        <button className="btn btn-success" onClick={onSubmit}>
-          Add Slide
+        <button className="btn btn-success " onClick={onSubmit}>
+          Add Project
         </button>
       </div>
     </div>

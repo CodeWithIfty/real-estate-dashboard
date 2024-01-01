@@ -94,16 +94,13 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           <NavLink
             end
             to="/dashboard"
-            className="flex items-center gap-2 justify-center"
+            className="flex items-center gap-2 justify-center w-full"
           >
             <img
-              src="/images/logo.svg"
+              src="/images/Logo.png"
               alt=""
-              className=" bg-white rounded-full p-1"
+              className=" bg-white w-20"
             />
-            <h1 className="text-sm font-bold 2xl:block xl:hidden">
-              Admin Panel
-            </h1>
           </NavLink>
         </div>
 

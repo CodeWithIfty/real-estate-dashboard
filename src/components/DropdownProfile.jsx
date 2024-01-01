@@ -55,7 +55,7 @@ function DropdownProfile({ align }) {
       >
         <img
           className="w-8 h-8 rounded-full"
-          src={"/images/logo.png"}
+          src={"/images/Logo.png"}
           width="32"
           height="32"
           alt="User"

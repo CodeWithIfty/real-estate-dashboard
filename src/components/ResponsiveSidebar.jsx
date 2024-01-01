@@ -28,7 +28,7 @@ const ResponsiveSidebar = () => {
       />
       <div className="flex gap-x-4 items-center">
         <img
-          src="/src/assets/logo.png"
+          src="/src/assets/Logo.png"
           className={`cursor-pointer w-10 duration-500 ${open && "rotate-[360deg]"}`}
         />
         <h1
